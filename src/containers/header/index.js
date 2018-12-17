@@ -8,7 +8,7 @@ const Header = props => {
             <p className="description">{props.desc}</p>
             <p className="btn-desc">Подробнее</p>
             <div className='btn-scroll'>
-                <div onClick={(e) => {props.goToPage(e, "solutions"); e.preventDefault(); return false;}}>{props.btnTitle}</div>
+                <div onClick={(e) => {props.handlePageClick(e, "solutions"); e.preventDefault(); return false;}}>{props.btnTitle}</div>
             </div>
         </header>
     )

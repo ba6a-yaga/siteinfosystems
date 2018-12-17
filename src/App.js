@@ -218,13 +218,19 @@ class App extends Component {
     title: "Информационные системы"
   }
 
+  scrollToPage(e, pageId, fromBottom = false) {
+      console.log(pageId);
+      // this.simplePageScroll.scrollToPage(e, pageId, fromBottom)
+  }
+
   render() {
     return (
       <Main title={this.state.title}>
           <NavigationMenu ref={c => this.navigationMenu = c}
+                          handlePageClick={this.scrollToPage.bind(this)}
                           {...this.state.menu}
           />
-          <Header {...this.state.content.header}/>
+          <Header handlePageClick={this.scrollToPage.bind(this)} {...this.state.content.header} />
           <Solutions {...this.state.content.solutions}/>
           <About {...this.state.content.about}/>
           <Development {...this.state.content.development}/>

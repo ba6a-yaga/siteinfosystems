@@ -6,8 +6,8 @@ $media-direction: min;
 
 // цвет лого
 $main-logo-color: linear-gradient(to right,#009FE3,#0062CF); //  главный
-$invert-logo-color: #CC2F31; // инвертированный который внутри класса invert
-$inner-logo-color: #CC2F31; // лого внутри мобайл меню
+$invert-logo-color: linear-gradient(to right,#009FE3,#0062CF); // инвертированный который внутри класса invert
+$inner-logo-color: linear-gradient(to right,#009FE3,#0062CF); // лого внутри мобайл меню
 
 // цвет шрифта меню
 $main-font-color:white; // главный
@@ -166,7 +166,7 @@ nav {
     div.App-logo {
       cursor: pointer;
       grid-row: 1;
-      grid-column: 2;
+      grid-column: 1  ;
       text-decoration: none;
       width: 27px;
       margin-top: 28px;
@@ -209,7 +209,7 @@ nav {
   }
 }
 
-$menu-icon-size: 15px;
+$menu-icon-size: 26px;
 $menu-icon-dash-width: 8px; //em(4.5rem, 6rem)
 $menu-icon-dash-height: 1px; //em(0.3rem, 6rem)
 $menu-icon-dash-gutter: $menu-icon-dash-height * 4;
