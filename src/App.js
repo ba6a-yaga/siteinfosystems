@@ -9,6 +9,7 @@ import Services from "./containers/services";
 import Features from "./containers/features";
 import Partners from "./containers/partners";
 import Contacts from "./containers/footer";
+import SimplePageScroller from "./components/simplePageScroller/simplePageScroller";
 
 class App extends Component {
 
@@ -218,10 +219,46 @@ class App extends Component {
     title: "Информационные системы"
   }
 
+
+  pages = [
+    'header',
+    'solutions',
+    'about',
+    'development',
+    'services',
+    'features',
+    'clients',
+    'footer'
+  ];
+
   scrollToPage(e, pageId, fromBottom = false) {
       console.log(pageId);
-      // this.simplePageScroll.scrollToPage(e, pageId, fromBottom)
+      this.simplePageScroll.scrollToPage(e, pageId, fromBottom)
   }
+
+  onChangePage = (pageNumber, pageID) => {
+    console.log(window.innerWidth)
+
+    let timeout = 900;
+    if (this.lastPage > pageNumber) {
+      timeout = 100;
+    }
+    this.pageID = pageID;
+    switch (pageID) {
+      case 'header':
+      case 'footer':
+      case 'clients':
+      case 'features':
+        setTimeout(this.navigationMenu.toggleDefault, timeout)
+        break
+      default:
+        setTimeout(this.navigationMenu.toggleInvert, timeout)
+        break
+    }
+    this.lastPage = pageNumber;
+    this.navigationMenu.setActivePage(this.pageID)
+  }
+
 
   render() {
     return (
@@ -230,6 +267,8 @@ class App extends Component {
                           handlePageClick={this.scrollToPage.bind(this)}
                           {...this.state.menu}
           />
+        <SimplePageScroller ref={c => {this.simplePageScroll = c;}} onChangePage={this.onChangePage}
+                            pages={this.pages}>
           <Header handlePageClick={this.scrollToPage.bind(this)} {...this.state.content.header} />
           <Solutions {...this.state.content.solutions}/>
           <About {...this.state.content.about}/>
@@ -238,6 +277,7 @@ class App extends Component {
           <Features {...this.state.content.features} />
           <Partners {...this.state.content.partners} />
           <Contacts {...this.state.content.footer} />
+        </SimplePageScroller>
       </Main>
     );
   }
