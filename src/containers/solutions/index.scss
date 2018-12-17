@@ -1,3 +1,6 @@
+@import '../../mixin';
+$media-direction: min;
+
 .App-solutions {
   position: relative;
   top: 100vh;
@@ -11,39 +14,51 @@
   grid-template-rows: repeat(6,1fr);
 
   .imgBackBlock {
-    justify-self: flex-end;
     align-self: flex-end;
 
-    width:100%;
-    height: 100px;
     margin-right: -5vw;
 
     background: #194FD4;
     mask: url("../../static/resources/pic1.svg") center / contain no-repeat;
 
-    grid-column: 4;
-    grid-row: 2 / span 2 ;
+    @include media((
+            grid-column:(xs:2 / span 3, sm:4),
+            grid-row:(xs:2 / span 2, sm: 2 / span 2),
+            height:(xs:100px),
+            width:(xs:150%, sm:100%),
+            justify-self:(xs:flex-start, sm:flex-end)
+    ));
   }
 
   .titleService {
-    grid-column: 2;
-    grid-row: 3;
+    @include media((
+            grid-column:(xs:2 / span 3,sm:2),
+            grid-row:(xs:4,sm:3)
+    ));
   }
 
   .solutions-info {
     margin:0;
 
     grid-row: 5;
-    grid-column: 2 /span 3;
+    grid-column: 2 / span 3;
 
     display: grid;
-    grid-template-columns: 375px 375px;
+    grid-template-columns: repeat(auto-fill,minmax(375px,1fr)); // 375px 375px
     grid-template-rows: 1fr;
-    grid-gap: 100px;
+
+    @include media((
+            grid-gap:(xs:0px,sm:100px)
+    ));
 
     .info {
       grid-column: auto;
       padding: 20px;
+
+      @include media((
+              padding:(xs:0px,sm:20px),
+              padding-top:(xs:25px,sm:20px)
+      ));
 
       .solutions-info-icon1,.solutions-info-icon2 {
         width: 50px;
@@ -62,28 +77,36 @@
       }
 
       .solutions-info-title {
-        font-size: 18px;
         font-weight: 600;
         margin-bottom: 20px;
+
+        @include media((
+                font-size:(xs:14px,sm:18px)
+        ));
       }
 
       .solutions-info-desc {
-        font-size: 15px;
+        @include media((
+                width:(xs:80%),
+                font-size:(xs:12px,sm:15px)
+        ));
       }
 
-      &:hover {
-        transition: all 500ms ease-out;
-        cursor: pointer;
-        box-shadow: 0 0 10px 5px #b4b4b4;
-
-        .solutions-info-title {
-          color: #557DDC;
+      @media (min-width: 768px) {
+        &:hover {
           transition: all 500ms ease-out;
-        }
+          cursor: pointer;
+          box-shadow: 0 0 10px 5px #b4b4b4;
 
-        .solutions-info-icon1,.solutions-info-icon2 {
-          background: #557DDC;
-          transition: all 500ms ease-out;
+          .solutions-info-title {
+            color: #557DDC;
+            transition: all 500ms ease-out;
+          }
+
+          .solutions-info-icon1,.solutions-info-icon2 {
+            background: #557DDC;
+            transition: all 500ms ease-out;
+          }
         }
       }
     }

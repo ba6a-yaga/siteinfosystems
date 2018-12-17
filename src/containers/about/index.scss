@@ -1,3 +1,6 @@
+@import '../../mixin';
+$media-direction: min;
+
 .App-about {
   position: relative;
   top: 100vh;
@@ -23,6 +26,10 @@
     font-weight: 600;
     color: #194FD4;
 
+    @include media((
+            display:(xs:none,sm:block)
+    ));
+
     &:before {
       content:'';
       display: block;
@@ -36,8 +43,10 @@
   }
 
   .titleService {
-    grid-column: 2;
-    grid-row: 3;
+    @include media((
+            grid-column:(xs:2 / span 3,sm:2),
+            grid-row:(xs:2,sm:3)
+    ));
   }
 }
 
@@ -45,22 +54,29 @@
   .about-info {
     margin:0;
 
-    grid-row: 5;
-    grid-column: 2 ;
-
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
-    grid-gap: 100px;
 
+    @include media((
+            grid-column:(xs:2 / span 3,sm:2),
+            grid-row:(xs:4,sm:5),
+            grid-gap:(xs:20px,sm:100px),
+            margin-bottom:(xs:50px,sm:0px),
+    ));
 
     .about-info-title {
-      font-size: 18px;
       margin-bottom: 20px;
+
+      @include media((
+              font-size:(xs:16px,sm:18px)
+      ));
     }
 
     .about-info-desc {
-      font-size: 15px;
+      @include media((
+              font-size:(xs:12px,sm:15px)
+      ));
     }
   }
 
@@ -77,23 +93,33 @@
 
     grid-column: 4;
     grid-row: 5;
+
+    @include media((
+            display:(xs:none,sm:block)
+    ));
   }
 
   .about-license {
     margin:0;
 
-    grid-row: 5;
-    grid-column: 4;
-
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
-    grid-gap: 100px;
+    align-items: flex-end;
+
+    @include media((
+            grid-column:(xs:2,sm:4),
+            grid-row:(xs:5,sm:5),
+            grid-gap:(xs:20px,sm:100px)
+    ));
 
     .about-license-title {
-      font-size: 15px;
       font-weight: 600;
-      margin-bottom: 20px;
+
+      @include media((
+              font-size:(xs:12px,sm:15px),
+              margin-bottom:(xs:25px,sm:20px)
+      ));
 
       &:before {
         content:'';

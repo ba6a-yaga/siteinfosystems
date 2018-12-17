@@ -1,3 +1,6 @@
+@import '../../mixin';
+$media-direction: min;
+
 .service {
   display: grid;
   grid-template-columns: 1fr;
@@ -39,7 +42,36 @@
   }
 }
 
+@mixin fontSize() {
+  .numberBlock {
+    @include media((
+            font-size:(xs:10px, sm:13px),
+    ));
+  }
+
+  .title {
+    @include media((
+            font-size:(xs:25px, sm:40px),
+    ));
+  }
+
+  .desc {
+    @include media((
+            font-size:(xs:12px, sm:15px),
+    ));
+  }
+
+  .list {
+    @include media((
+            font-size:(xs:12px, sm:15px),
+    ));
+  }
+}
+
+
 .serviceWithTopIcon {
+  @include fontSize();
+
   .iconTop {
     grid-column: 1;
     grid-row: 1;
@@ -51,7 +83,6 @@
     height: 13px;
 
     color: #557DDC;
-    font-size: 13px;
 
     grid-column: 1;
     grid-row: 2;
@@ -61,7 +92,6 @@
     margin:0;
 
     text-transform: uppercase;
-    font-size: 40px;
 
     align-self: flex-start;
 
@@ -83,7 +113,6 @@
   }
 
   .list {
-    font-size: 15px;
     width: 80%;
 
     grid-column: 1 / span 2;
@@ -101,12 +130,12 @@
 }
 
 .service {
+  @include fontSize();
 
   .numberBlock {
     height: 13px;
 
     color: #557DDC;
-    font-size: 13px;
 
     grid-column: 1;
     grid-row: 1;
@@ -116,7 +145,6 @@
     margin:0;
 
     text-transform: uppercase;
-    font-size: 40px;
 
     align-self: flex-start;
 
@@ -128,7 +156,6 @@
     margin:0;
     margin-top: 15px;
 
-    font-size: 15px;
     width: 80%;
 
     align-self: flex-start;
@@ -139,12 +166,12 @@
 }
 
 .serviceWithLeftIcon {
+  @include fontSize();
 
   .numberBlock {
     height: 13px;
 
     color: #557DDC;
-    font-size: 13px;
 
     grid-column: 2;
     grid-row: 1;
@@ -154,7 +181,6 @@
     margin:0;
 
     text-transform: uppercase;
-    font-size: 40px;
 
     align-self: flex-start;
 
@@ -166,7 +192,6 @@
     margin:0;
     margin-top: 15px;
 
-    font-size: 15px;
     width: 80%;
 
     align-self: flex-start;
