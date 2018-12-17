@@ -1,0 +1,109 @@
+.App-about {
+  position: relative;
+  top: 100vh;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #FFF;
+
+  display: grid;
+  grid-template-columns: 1fr 5fr 2fr 5fr;
+  grid-template-rows: repeat(6, 1fr);
+
+  .logoBlock {
+    align-self: flex-start;
+    margin-top: 15px;
+
+    width: 100%;
+
+    grid-column: 4;
+    grid-row: 3;
+
+    line-height: 46px;
+    font-weight: 600;
+    color: #194FD4;
+
+    &:before {
+      content:'';
+      display: block;
+      float:left;
+      margin-right: 20px;
+      width:45px;
+      height:45px;
+      background: #194FD4;
+      mask: url(../../static/resources/logo2.svg) center / contain no-repeat;
+    }
+  }
+
+  .titleService {
+    grid-column: 2;
+    grid-row: 3;
+  }
+}
+
+.App-about {
+  .about-info {
+    margin:0;
+
+    grid-row: 5;
+    grid-column: 2 ;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 100px;
+
+
+    .about-info-title {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .about-info-desc {
+      font-size: 15px;
+    }
+  }
+
+  .imgBackBlock {
+    justify-self: flex-end;
+    align-self: flex-start;
+
+    width:800px;
+    height: 234px;
+    margin-right: -38vw;
+
+    background: #194FD4;
+    mask: url("../../static/resources/pic2.svg") center / contain no-repeat;
+
+    grid-column: 4;
+    grid-row: 5;
+  }
+
+  .about-license {
+    margin:0;
+
+    grid-row: 5;
+    grid-column: 4;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 100px;
+
+    .about-license-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 20px;
+
+      &:before {
+        content:'';
+        display: block;
+        margin-bottom: 20px;
+        width:45px;
+        height:45px;
+        background: #194FD4;
+        mask: url('../../static/resources/icon 3.svg') center / contain no-repeat;
+      }
+    }
+  }
+}

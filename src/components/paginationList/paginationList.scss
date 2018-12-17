@@ -1,0 +1,28 @@
+@import '../../mixin';
+
+$media-direction: min;
+.pagination-list {
+
+  display: grid;
+  grid-template-columns: 65px;
+  grid-auto-flow: column;
+  padding: 0;
+  grid-gap: 28px;
+  justify-content: center;
+
+  li {
+    display: block;
+    width: 65px;
+    border-bottom: 1px solid #B2B2B2;
+    height: 20px;
+    paddnig: 0 14px;
+    a {
+      text-decoration: none;
+      height: 20px;
+      display: block;
+    }
+    &.active {
+      border-color: #194FD4;
+    }
+  }
+}

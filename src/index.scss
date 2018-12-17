@@ -1,0 +1,43 @@
+@import 'mixin';
+$media-direction: min;
+html {
+  overflow-x:hidden;
+}
+body {
+  margin: 0;
+  padding: 0;
+  @include media((
+          font-size:(xs:12px, sm:15px,md:15px)
+  ));
+  font-family: Geometria;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+@font-face {
+  font-family: Geometria;
+  font-style: normal;
+  font-weight: normal;
+  src:
+          url('./static/fonts/Geometria.ttf') format('truetype'),
+          url('./static/fonts/Geometria.otf') format('otf')
+}
+
+@font-face {
+  font-family: Geometria-M;
+  font-style: normal;
+  font-weight: 600;
+  src:
+          url('./static/fonts/Geometria-medium.ttf') format('truetype'),
+          url('./static/fonts/Geometria-Medium.otf') format('otf')
+}
+
+@font-face {
+  font-family: Geometria-B;
+  font-style: normal;
+  font-weight: 700;
+  src:
+          url('./static/fonts/Geometria-ExtaBlack.ttf') format('truetype'),
+          url('./static/fonts/Geometria-ExtaBlack.otf') format('otf')
+}

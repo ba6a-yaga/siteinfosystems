@@ -1,0 +1,143 @@
+.App-development {
+  position: relative;
+  top: 100vh;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #F6F6F6;
+
+  display: grid;
+  grid-template-columns: 1fr 5fr 2fr 5fr;
+  grid-template-rows: repeat(6, 1fr);
+
+  .logoBlock {
+    align-self: flex-start;
+    margin-top: 15px;
+
+    width: 100%;
+
+    grid-column: 4;
+    grid-row: 3;
+
+    line-height: 46px;
+    font-weight: 600;
+    color: #194FD4;
+
+    &:before {
+      content:'';
+      display: block;
+      float:left;
+      margin-right: 20px;
+      width:45px;
+      height:45px;
+      background: #194FD4;
+      mask: url(../../static/resources/logo2.svg) center / contain no-repeat;
+    }
+  }
+
+  .titleService {
+    grid-column: 2;
+    grid-row: 3;
+  }
+
+  #development-info-desc {
+    grid-column: 4;
+    grid-row: 5;
+    margin-left: -42px;
+
+    p {
+      margin-top: 0;
+      font-size: 15px;
+      width:80%;
+
+      text-align: left;
+
+      &:before {
+        content:'';
+        width: 32px;
+        height:16px;
+        float: left;
+        margin-right: 10px;
+        background: #194FD4;
+        mask: url(../../static/resources/arrow.svg) center / contain no-repeat;
+      }
+    }
+  }
+
+  #development-info-more {
+    margin-top: 10px;
+    cursor: pointer;
+    grid-column: 4;
+    grid-row: 5;
+    align-self: flex-end;
+    width:80%;
+
+    &.enable:before {
+      content:'-';
+      display: block;
+      font-size: 25px;
+    }
+
+    &.disable:before {
+      content:'+';
+      display: block;
+      font-size: 25px;
+    }
+  }
+}
+
+.App-development {
+  .development-info {
+    margin:0;
+
+    grid-row: 5;
+    grid-column: 2;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 100px;
+
+    .development-info-icon1,.development-info-icon2,.development-info-icon3,.development-info-icon4 {
+      width: 45px;
+      height: 45px;
+      margin-bottom: 20px;
+    }
+
+    .development-info-icon1 {
+      background: black;
+      mask: url('../../static/resources/icon 4.svg') center / contain no-repeat;
+    }
+    .development-info-icon2 {
+      background: black;
+      mask: url('../../static/resources/icon 5.svg') center / contain no-repeat;
+    }
+    .development-info-icon3 {
+      background: black;
+      mask: url('../../static/resources/icon 6.svg') center / contain no-repeat;
+    }
+    .development-info-icon4 {
+      background: black;
+      mask: url('../../static/resources/icon 7.svg') center / contain no-repeat;
+    }
+
+    .development-info-title {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    #development-info1,#development-info2,#development-info3,#development-info4 {
+      cursor: pointer;
+
+      &.active {
+        .development-info-icon1,.development-info-icon2,.development-info-icon3,.development-info-icon4 {
+          background: #194FD4;
+        }
+
+        .development-info-title {
+          color: #194FD4;
+        }
+      }
+    }
+  }
+}

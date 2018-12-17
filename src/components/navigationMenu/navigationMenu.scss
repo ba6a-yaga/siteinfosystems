@@ -1,0 +1,319 @@
+@import '../../mixin';
+
+$media-direction: min;
+
+
+
+// цвет лого
+$main-logo-color: linear-gradient(to right,#009FE3,#0062CF); //  главный
+$invert-logo-color: #CC2F31; // инвертированный который внутри класса invert
+$inner-logo-color: #CC2F31; // лого внутри мобайл меню
+
+// цвет шрифта меню
+$main-font-color:white; // главный
+$invert-font-color:black; // инвертированный который внутри класса invert
+$mobile-font-color: black; // цвет шрифта внутри мобайл меню
+
+// цвет бургера
+$main-burger-color:white; // главный
+$inner-burger-color:black; // цвет бургера внутри мобайл меню
+$invert-burger-color:black; // инвертированный который внутри класса invert
+
+
+// цвет подчеркивания меню
+$main-menu-underline-color: linear-gradient(to right,#009FE3,#0062CF); // главный цвет
+$invert-menu-underline-color: black; // инвертированный который внутри класса invert
+
+// цвет фона мобайл меню
+$mobile-menu-bg-color : #ebebeb;
+
+
+// Сетка
+.area {
+  // Объявляем этот блок flex-контейнером
+  // Центрируем
+  margin-right: auto;
+  margin-left: auto;
+  // Устанавливаем главную ось и многострочность контейнера
+  flex-flow: row wrap; // строка многострочный
+  // Расположение элементов относительно поперечной оси на строке
+  align-items: stretch; // растягиваются
+
+  @include media((
+          width:(sm:750px, md:970px, lg:1088px, xl:1460px),
+          padding:(xs:0 45px, sm:0)
+  ));
+}
+
+nav {
+  position: fixed;
+  z-index: 25;
+  width: 100%;
+  &:before {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    content: '';
+    right: -100%;
+    height: 100%;
+    background-color:$main-menu-underline-color;
+    opacity: 0;
+    -webkit-transition: opacity .3s;
+    transition: opacity .3s;
+  }
+  .menu-grid {
+    display: -webkit-flex;
+    display: grid;
+    width: 100%;
+    @include media((
+            padding:(xs:0 0, sm:0)
+    ));
+    grid-template-columns: 60px 1fr;
+    grid-template-rows: 60px 1fr;
+
+    &.opened {
+      .menu {
+        @include media((
+                transform:(xs:translateX(-100%), sm:translateX(0)),
+                -webkit-transform:(xs:translateX(-100%), sm:translateX(0))
+        ));
+      }
+
+      .menu-icon {
+        border: 1px solid $inner-burger-color !important;
+      }
+    }
+
+    .menu {
+      div.App-logo {
+        cursor: pointer;
+        background: $inner-logo-color;
+        @include media((
+                display:(xs:block, sm:none)
+        ));
+        margin-left: 45px;
+      }
+
+      @include media((
+              transition:(xs:transform 0.5s ease-in-out, sm:none),
+              -webkit-transition:(xs:transform 0.5s ease-in-out, sm:none),
+              -moz-transition:(xs:transform 0.5s ease-in-out, sm:none),
+              -o-transition:(xs:transform 0.5s ease-in-out, sm:none)
+      ));
+      @include media((
+              display:(xs:grid, sm:grid),
+              position:(xs: fixed, sm:relative),
+              left:(xs:100%, sm:0),
+              width:(xs:100%, sm:auto),
+              height:(xs:100%, sm:auto),
+              background:(xs:$mobile-menu-bg-color, sm:transparent),
+              grid-row:(xs:1, sm:1),
+              grid-template-rows:(xs:120px min-content, sm:120px 200px),
+              grid-column:(xs:1 / span 2, sm:2)
+      ));
+      ul {
+
+        padding: 0;
+        @include media((
+                justify-content:(xs:center, sm:flex-end),
+                display:(xs:grid, sm:flex),
+                grid-template-columns:(xs:1fr, sm:inherit),
+                text-align:(xs:center, sm:left),
+        ));
+
+        list-style-type: none;
+        display: flex;
+        li {
+          @include media((
+                  justify-content:(xs:center, sm:flex-end)
+          ));
+        }
+        a {
+          @include media((
+                  margin:(xs: 20px 0px 25px 0, sm: 20px 0px 27px 55px),
+                  color:(xs: $mobile-font-color, sm: $main-font-color),
+                  display:(xs:grid, sm:flex),
+                  grid-template-columns:(xs:1fr, sm:inherit),
+          ));
+          display: block;
+          text-decoration: none;
+          position: relative;
+          &:before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            width: 0px;
+            height: 3px;
+            -webkit-transition: width 0.5s ease-out;
+            -moz-transition: width 0.5s ease-out;
+            -o-transition: width 0.5s ease-out;
+            transition: width 0.5s ease-out;
+            @include media((
+                    background:(xs:transparent !important, sm: $main-menu-underline-color !important)
+            ));
+          }
+          &:hover::before {
+            width: 15px;
+          }
+          &.active:before {
+            width: 15px;
+          }
+        }
+      }
+    }
+
+    div.App-logo {
+      cursor: pointer;
+      grid-row: 1;
+      grid-column: 2;
+      text-decoration: none;
+      width: 27px;
+      margin-top: 28px;
+      margin-left: 0;
+      font-size: 15px;
+      &:before {
+        content: inherit;
+        color: $main-logo-color;
+      }
+      background: $main-logo-color;
+      mask: url(../../static/resources/logo2.svg) no-repeat;
+    }
+
+    .menu-icon {
+      grid-row: 1;
+      grid-column: 2;
+    }
+    &.invert {
+      div.App-logo {
+        background: $invert-logo-color;
+        &:before {
+          color: $invert-logo-color;
+        }
+      }
+      ul {
+        a {
+          color: $invert-font-color;
+          &:before {
+            @include media((
+                    background:(xs:transparent !important, sm: $invert-menu-underline-color!important)
+            ));
+          }
+        }
+      }
+
+      .menu-icon {
+        border: 1px solid $invert-burger-color;
+      }
+    }
+  }
+}
+
+$menu-icon-size: 15px;
+$menu-icon-dash-width: 8px; //em(4.5rem, 6rem)
+$menu-icon-dash-height: 1px; //em(0.3rem, 6rem)
+$menu-icon-dash-gutter: $menu-icon-dash-height * 4;
+$menu-icon-dash-color: $main-burger-color;
+$menu-icon-dash-border-radius: 0;
+
+%menu-dash {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: ($menu-icon-size - $menu-icon-dash-width) / 2; // center X
+  background-color: $menu-icon-dash-color;
+  width: $menu-icon-dash-width;
+  height: $menu-icon-dash-height;
+  border-radius: $menu-icon-dash-border-radius;
+  transition: background-color 0.5s ease-in-out;
+}
+
+.opened {
+  .menu-icon {
+    &:before, &:after {
+      background-color: $inner-burger-color !important;
+    }
+  }
+}
+
+.menu-icon {
+  transition: border 0.5s ease-in-out;
+  @include media((
+          display:(xs:inline-block, sm:none)
+  ));
+  font-size: $menu-icon-size;
+  width: 28px;
+  height: 28px;
+  display: inline-block;
+  position: relative;
+  background-color: transparent;
+  border: 1px solid $main-burger-color;
+
+  padding: 0;
+  outline: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
+  cursor: pointer;
+  justify-self: flex-end;
+
+  span {
+    @extend %menu-dash;
+    margin-top: $menu-icon-dash-height/-2;
+  }
+
+  &:before {
+    content: "";
+    @extend %menu-dash;
+    margin-top: -$menu-icon-dash-gutter + ($menu-icon-dash-height/-2);
+  }
+
+  &:after {
+    content: "";
+    @extend %menu-dash;
+    margin-top: $menu-icon-dash-gutter + ($menu-icon-dash-height/-2);
+  }
+}
+
+.invert {
+  %menu-dash {
+    background: $invert-burger-color ;
+  }
+}
+
+// Example 1
+// =============================================
+.cross {
+  span {
+    transition: 0.2s ease-in-out 0.2s;
+  }
+
+  &:before, &:after {
+    transition: margin 0.2s ease-in-out 0.2s, transform 0.2s ease-in-out 0s;
+  }
+
+  &.is-open {
+    span {
+      background-color: rgba($menu-icon-dash-color, 0);
+      transition-delay: 0s;
+    }
+
+    &:before, &:after {
+      margin-top: 0;
+      transition-delay: 0s, 0.25s, 0.25s;
+    }
+
+    &:before {
+      transform: rotate(45deg);
+    }
+
+    &:after {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+.menu-icon {
+  margin: 2rem 0;
+}
+

@@ -1,0 +1,101 @@
+@import "../../mixin";
+$media-direction:min;
+
+// Сетка
+.area {
+  // Объявляем этот блок flex-контейнером
+  // Центрируем
+  margin-right: auto;
+  margin-left: auto;
+  // Устанавливаем главную ось и многострочность контейнера
+  flex-flow: row wrap; // строка многострочный
+  // Расположение элементов относительно поперечной оси на строке
+  align-items: stretch; // растягиваются
+
+  @include media((
+          width:(sm:750px, md:970px, lg:1088px, xl:1460px),
+          padding:(xs:0 45px, sm:0)
+  ));
+}
+
+.clients {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  top: 100vh;
+
+  display: grid;
+  align-items: center;
+
+  .content-header {
+    text-align: center;
+    @include media((
+            padding-top:(xs:0, sm:20px)
+    ));
+    span {
+      font-size: 13px;
+      line-height: 16px;
+      padding-top: 16px;
+      letter-spacing: 0.04em;
+      text-align: center;
+      color: #D13133;
+      width: 30px;
+    }
+    h2 {
+      font-size: 40px;
+      color: white;
+      line-height: 48px;
+      font-weight: normal;
+      margin: 0;
+      @include media((
+              padding:(xs:5px 0 0 0, sm:5px 0px 0px 0px, md:5px 100px 0 100px, lg:5px 150px 0 150px),
+              font-size:(xs:24px, sm:40px),
+              line-height:(xs:32px, sm:48px)
+      ));
+    }
+
+    p {
+      margin-bottom: 10px;
+      @include media((
+              padding:(xs:7px 0 0 0, sm:7px 105px 0 105px, md:7px 205px 0 205px),
+              margin:(xs:0 -20px 10px -20px, sm:0 0 10px 0)
+      ));
+    }
+  }
+
+  //padding-bottom: 65px;
+  background: url("../../static/resources/back.png");
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  object-fit: cover;
+
+  .clients-page-container {
+    overflow-x: hidden;
+  }
+  .clients-page {
+    transition: transform 0.5s ease-out;
+    text-align: center;
+    vertical-align: middle;
+    display: grid;
+    grid-auto-flow: column;
+    grid-row: span 1/span 2;
+    grid-auto-columns: 50%;
+    grid-template-rows: 170px 170px;
+    @include media((
+            grid-auto-columns: (
+                    xs:50%,
+                    sm:33%,
+                    md:25%
+            ),
+    ));
+    align-content: space-evenly;
+    margin-top: 50px;
+    align-items: center;
+    padding-bottom: 20px;
+    a {
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+}

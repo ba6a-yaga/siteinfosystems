@@ -1,0 +1,113 @@
+.App-header {
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100vw;
+  height: 100vh;
+  background: url("../../static/resources/back.png");
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  object-fit: cover;
+
+  display: grid;
+  grid-template-column: 1fr;
+  grid-template-rows: repeat(6,1fr);
+
+  .title {
+    grid-row: 3;
+    justify-self: center;
+    align-self: center;
+    color: white;
+    text-transform: uppercase;
+    font-size: 40px;
+  }
+
+  .description {
+    grid-row: 4;
+    justify-self: center;
+    align-self: flex-start;
+    color: white;
+    font-size: 18px;
+    width:60%;
+    text-align: center;
+  }
+
+  .btn-desc {
+    grid-row: 5;
+    justify-self: center;
+    align-self: flex-end;
+    color: white;
+    font-size: 12px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .btn-scroll {
+    grid-row: 6;
+    justify-self: center;
+    align-self: flex-start;
+
+    cursor: pointer;
+    position: relative;
+    width: 21px;
+    height: 42px;
+
+    border-radius: 25px;
+
+    background-image: linear-gradient(to right,#009FE3,#0062CF);
+    background-repeat: no-repeat;
+
+    left: 0px;
+    z-index: 11;
+
+    div {
+      position: absolute;
+      left: 1.5px;
+      top: 1.5px;
+      width: 18.5px;
+      height: 38.5px;
+      background: #000A27;
+      border-radius: 25px;
+
+      &:before {
+        position: absolute;
+        left: 53.5%;
+        content: '';
+        width: 7px;
+        height: 7px;
+        background: #fff;
+        margin-left: -4px;
+        top: 5px;
+        border-radius: 4px;
+        -webkit-animation-duration: 1.5s;
+        animation-duration: 1.5s;
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+        -webkit-animation-name: scroll;
+        animation-name: scroll;
+      }
+    }
+  }
+
+  @-webkit-keyframes scroll {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      -webkit-transform: translateY(22px);
+      transform: translateY(22px);
+    }
+  }
+
+  @keyframes scroll {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      -webkit-transform: translateY(22px);
+      transform: translateY(22px);
+    }
+  }
+}

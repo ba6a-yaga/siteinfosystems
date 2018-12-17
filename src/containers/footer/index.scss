@@ -1,0 +1,308 @@
+@import '../../mixin';
+$media-direction:min;
+
+.App-footer {
+  position: relative;
+  height: 100vh;
+  top: 100vh;
+
+  overflow-y: hidden;
+  overflow-x: hidden;
+
+  display: grid;
+  align-items: center;
+  grid-template-columns: minmax(0, 1fr);
+  font-size: calc(15px);
+  color: white;
+  .area {
+    @include media((
+            margin:(xs:0, sm:auto)
+    ));
+  }
+  background: #1B52D3;
+
+  .footer {
+    position: relative;
+    z-index: 10;
+    align-content: center;
+    display: grid;
+    //grid-gap: 0px 190px;
+
+    @include media((
+            grid-template-areas: (
+                    xs:'.' 'title' 'form' 'cutaway' 'copyright' 'privacy',
+                    sm:'. . . . .' 'title title . cutaway cutaway' 'form form . cutaway cutaway' 'copyright copyright . . .' 'privacy privacy . move-to-top move-to-top',
+                    md:'. . . . .' 'title title . cutaway cutaway' 'form form . cutaway cutaway' 'copyright privacy . move-to-top move-to-top'
+            ),
+            grid-template-columns: (
+                    xs:1fr,
+                    sm:minmax(0, 1fr) minmax(0, 1fr) minmax(0, 30px) minmax(0, 1fr) minmax(0, 1fr),
+                    md:minmax(0, 1fr) minmax(0, 1fr) minmax(0, 90px) minmax(0, 1fr) minmax(0, 1fr),
+                    lg:minmax(0, 1fr) minmax(0, 1fr) minmax(0, 180px) minmax(0, 1fr) minmax(0, 1fr)
+            ),
+            grid-template-rows: (
+                    xs:100px repeat(5, auto),
+                    sm:110px 136px 340px 30px 30px
+            ),
+    ));
+    .title {
+      grid-area: title;
+    }
+    .contact-form {
+      grid-area: form;
+    }
+    h2 {
+
+      @include media((
+              font-size:(xs:25px, sm:40px)
+      ));
+      line-height: 1.2;
+      padding-top: 0px;
+      font-weight: normal;
+      margin-top: 0px;
+      margin-bottom: 25px;
+      text-transform: uppercase;
+      color: rgb(255, 255, 255);
+    }
+
+    .copyright {
+      grid-area: copyright;
+      font-size: 13px;
+      line-height: 16px;
+      padding-top: 2px;
+      letter-spacing: 0.04em;
+    }
+
+    .copyright {
+      grid-area: copyright;
+      text-align: left;
+      grid-column: 1 / span 2;
+      justify-self: flex-start;
+      @include media((
+              font-size:(xs:10px, sm:13px),
+              line-height:(xs:1.2),
+              margin:(xs:0, sm:inherit)
+      ));
+    }
+    .privacy {
+      text-align: right;
+      grid-area: privacy;
+      grid-column: 1 / span 2;
+      @include media((
+              justify-self: (xs:flex-start, sm:flex-start, md:flex-end),
+      ));
+      grid-area: privacy;
+      padding-top: 2px;
+      letter-spacing: 0.04em;
+
+      @include media((
+              margin:(xs:0, sm:inherit)
+      ));
+      a {
+        text-decoration: none;
+        border-bottom:0.5px solid rgba(255, 255, 255, 0.5);
+        @include media((
+                font-size:(xs:10px, sm:13px),
+                line-height:(xs:1.2)
+        ));
+        padding-top: 2px;
+        letter-spacing: 0.04em;
+        color: rgb(255, 255, 255);
+      }
+    }
+
+    .cutaway {
+      grid-area: cutaway;
+      display: grid;
+      grid-template-areas: 'img' 'contacts' 'move-to-top';
+      grid-template-columns: 1fr;
+      //grid-template-rows: 270px 60px 114px;
+      justify-items: right;
+      img {
+
+        @include media((
+                display: (xs:none, sm:block),
+        ));
+        grid-area: img;
+        max-height: 100%;
+        max-width: 100%;
+        height: 250px;
+        justify-self: right;
+        object-fit: contain;
+      }
+
+      .contacts {
+        @include media((
+                justify-self: (xs:flex-start, sm:inherit, md:inherit),
+                padding: (xs:20px 0, sm:0),
+        ));
+        display: grid;
+        grid-area: contacts;
+        text-align: left;
+
+        grid-template-rows: 18px 18px 18px;
+        a {
+          color: #ffffff;
+          text-decoration: none;
+          border-bottom:0.5px solid rgba(255, 255, 255, 0.5);
+        }
+      }
+
+      letter-spacing: 0.04em;
+
+      color: #ffffff;
+      @include media((
+              font-size:(xs:12px, sm:15px),
+              line-height:(xs:1.2)
+      ));
+
+    }
+    #move-to-top {
+      grid-area: move-to-top;
+      background: url(../../static/resources/arrow.svg) center center no-repeat;
+      background-size: 8px 14px;
+      width: 35px;
+      height: 35px;
+      justify-self: flex-end;
+      align-self: flex-end;
+      -webkit-transform: rotate(-90deg);
+      -moz-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+      -o-transform: rotate(-90deg);
+      transform: rotate(-90deg);
+
+      @include media((
+              display:(xs:none, sm:block)
+      ));
+    }
+  }
+
+}
+
+.contact-form {
+  display: grid;
+  grid-gap: 18px 70px;
+  @include media((
+          grid-template-rows: (xs:repeat(4, 44px), sm:repeat(4, 66px)),
+          grid-template-columns: (xs:1fr, sm:repeat(2, 1fr), md:repeat(2, 1fr)),
+          grid-template-areas: (
+                  xs:'name' 'phone' 'message' 'button-send',
+                  sm:'name phone' 'message message' '. button-send',
+          )
+  ));
+
+  justify-items: center;
+
+  .input-name {
+    grid-area: name;
+    @include media((
+            justify-self:(xs:center, sm:flex-start)
+    ));
+  }
+  .phone {
+    grid-area: phone;
+    @include media((
+            justify-self:(xs:center, sm:flex-end)
+    ));
+  }
+  .message {
+    grid-area: message;
+    @include media((
+            justify-self:(xs:center, sm:center)
+    ));
+  }
+  .button-send {
+    grid-area: button-send;
+  }
+
+  .modalCloseIcon {
+    align-self: center;
+    justify-self: flex-end;
+    padding-right: 20px;
+    cursor: pointer;
+  }
+
+  input {
+    width: 100%;
+    text-align: left;
+    align-self: center;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid white;
+    border-radius: 0px;
+    color: white;
+    font-family: Geometria;
+    font-weight: normal;
+    position: relative;
+    box-sizing: content-box;
+    border-top: 1px solid transparent;
+    @include media((
+            font-size:(xs:12px, sm:15px),
+            line-height:(xs:36px, sm:45px)
+    ));
+    background: transparent;
+
+    &:focus {
+      border-top: 2px solid transparent;
+      border-bottom: 2px solid white;
+
+    }
+  }
+
+  button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    display: flex;
+    font-size: 12px;
+    line-height:33px;
+    text-align: right;
+
+    justify-self: right;
+    &:after {
+      display: flex;
+      content: '';
+      width: 33px;
+      height: 33px;
+      margin: 0px 0 0 20px;
+      border: 1px solid white;
+      border-radius: 50%;
+      background: url(../../static/resources/arrow.svg) no-repeat center center;
+      background-size: 6px 12px;
+    }
+  }
+  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    opacity: 1; /* Firefox */
+  }
+
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: white;
+  }
+
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: white;
+  }
+
+  .inputPhone {
+    color: transparent;
+    text-shadow: 0 0 0 white;
+  }
+
+  .isValid {
+    border-bottom: 1px solid green;
+  }
+
+  .isNotValid {
+    border-bottom: 1px solid red;
+  }
+}
+
+.App-link {
+  color: #ffffff;
+}

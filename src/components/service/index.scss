@@ -1,0 +1,185 @@
+.service {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 15px 1fr 2fr;
+}
+
+.serviceWithLeftIcon {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 15px 1fr 2fr;
+}
+
+.serviceWithTopIcon {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 103px 15px 1fr 2fr 5fr;
+}
+
+.service,.serviceWithLeftIcon,.serviceWithTopIcon {
+  .icon4 {
+    width:78px;
+    height:78px;
+    background: #194FD4;
+    mask: url(../../static/resources/icon8.svg) center / contain no-repeat;
+  }
+
+  .icon6 {
+    width:78px;
+    height:78px;
+    background: #194FD4;
+    mask: url(../../static/resources/icon9.svg) center / contain no-repeat;
+  }
+
+  .icon5 {
+    width:78px;
+    height:78px;
+    background: #194FD4;
+    mask: url(../../static/resources/icon10.svg) center / contain no-repeat;
+  }
+}
+
+.serviceWithTopIcon {
+  .iconTop {
+    grid-column: 1;
+    grid-row: 1;
+
+    align-self: flex-start;
+  }
+
+  .numberBlock {
+    height: 13px;
+
+    color: #557DDC;
+    font-size: 13px;
+
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .title {
+    margin:0;
+
+    text-transform: uppercase;
+    font-size: 40px;
+
+    align-self: flex-start;
+
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .desc {
+    margin:0;
+    margin-top: 15px;
+
+    font-size: 15px;
+    width: 80%;
+
+    align-self: center;
+
+    grid-column: 1 / span 2;
+    grid-row: 4;
+  }
+
+  .list {
+    font-size: 15px;
+    width: 80%;
+
+    grid-column: 1 / span 2;
+    grid-row: 5;
+
+    justify-self: flex-start;
+    margin: 0;
+    padding: 0;
+    padding-left: 14px;
+
+    li {
+      padding-bottom: 10px;
+    }
+  }
+}
+
+.service {
+
+  .numberBlock {
+    height: 13px;
+
+    color: #557DDC;
+    font-size: 13px;
+
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .title {
+    margin:0;
+
+    text-transform: uppercase;
+    font-size: 40px;
+
+    align-self: flex-start;
+
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .desc {
+    margin:0;
+    margin-top: 15px;
+
+    font-size: 15px;
+    width: 80%;
+
+    align-self: flex-start;
+
+    grid-column: 1;
+    grid-row: 3;
+  }
+}
+
+.serviceWithLeftIcon {
+
+  .numberBlock {
+    height: 13px;
+
+    color: #557DDC;
+    font-size: 13px;
+
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .title {
+    margin:0;
+
+    text-transform: uppercase;
+    font-size: 40px;
+
+    align-self: flex-start;
+
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .desc {
+    margin:0;
+    margin-top: 15px;
+
+    font-size: 15px;
+    width: 80%;
+
+    align-self: flex-start;
+
+    grid-column: 2;
+    grid-row: 3;
+  }
+
+  .iconLeft {
+    grid-column: 1;
+    grid-row: 1;
+
+    margin-right: 25px;
+    justify-self: flex-start;
+  }
+}

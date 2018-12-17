@@ -1,0 +1,91 @@
+.App-solutions {
+  position: relative;
+  top: 100vh;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #F6F6F6;
+
+  display: grid;
+  grid-template-columns: 1fr 5fr 2fr 5fr;
+  grid-template-rows: repeat(6,1fr);
+
+  .imgBackBlock {
+    justify-self: flex-end;
+    align-self: flex-end;
+
+    width:100%;
+    height: 100px;
+    margin-right: -5vw;
+
+    background: #194FD4;
+    mask: url("../../static/resources/pic1.svg") center / contain no-repeat;
+
+    grid-column: 4;
+    grid-row: 2 / span 2 ;
+  }
+
+  .titleService {
+    grid-column: 2;
+    grid-row: 3;
+  }
+
+  .solutions-info {
+    margin:0;
+
+    grid-row: 5;
+    grid-column: 2 /span 3;
+
+    display: grid;
+    grid-template-columns: 375px 375px;
+    grid-template-rows: 1fr;
+    grid-gap: 100px;
+
+    .info {
+      grid-column: auto;
+      padding: 20px;
+
+      .solutions-info-icon1,.solutions-info-icon2 {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 20px;
+      }
+
+      .solutions-info-icon1 {
+        background: black;
+        mask: url("../../static/resources/icon 1.svg") center / contain no-repeat;
+      }
+
+      .solutions-info-icon2 {
+        background: black;
+        mask: url("../../static/resources/icon 2.svg") center / contain no-repeat;
+      }
+
+      .solutions-info-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 20px;
+      }
+
+      .solutions-info-desc {
+        font-size: 15px;
+      }
+
+      &:hover {
+        transition: all 500ms ease-out;
+        cursor: pointer;
+        box-shadow: 0 0 10px 5px #b4b4b4;
+
+        .solutions-info-title {
+          color: #557DDC;
+          transition: all 500ms ease-out;
+        }
+
+        .solutions-info-icon1,.solutions-info-icon2 {
+          background: #557DDC;
+          transition: all 500ms ease-out;
+        }
+      }
+    }
+  }
+}
