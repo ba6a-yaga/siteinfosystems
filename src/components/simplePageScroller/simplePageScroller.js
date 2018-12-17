@@ -198,6 +198,7 @@ class SimplePageScroller extends React.Component {
             // если на экране виден разрыв между страницами
             if (currentPageId !== null) {
                 // то если мы пальцем вели вниз
+
                 if (scrollYEnd < this.scrollYPrev) {
                     let elemIndex = this.clamp(this.pages.indexOf(currentPageId) - 1, 0, this.pages.length - 1);
                     // то скроллим к передыдущей странице

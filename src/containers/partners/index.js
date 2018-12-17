@@ -48,6 +48,8 @@ class Partners extends Component {
       this.paginationList.showPage(event, this.paginationList.currentPage + 1);
     } else if (this.swipeOffset > 50) {
       this.paginationList.showPage(event, this.paginationList.currentPage - 1);
+    } else {
+      this.paginationList.showPage(event, this.paginationList.currentPage );
     }
     console.log("End swiping...", event);
     event.preventDefault();
