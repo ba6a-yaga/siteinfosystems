@@ -4,18 +4,20 @@ $media-direction: min;
 .pagination-list {
 
   display: grid;
-  grid-template-columns: 65px;
+  grid-template-columns: repeat(auto-fit, minmax(1px, 1fr));
   grid-auto-flow: column;
   padding: 0;
   grid-gap: 28px;
   justify-content: center;
+  justify-items: center;
 
   li {
     display: block;
-    width: 65px;
+    max-width: 65px;
     border-bottom: 1px solid #B2B2B2;
     height: 20px;
     paddnig: 0 14px;
+    width:100%;
     a {
       text-decoration: none;
       height: 20px;

@@ -6,14 +6,15 @@ class PaginationList extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            lastCountPerPage: 0,
             count: 0
         }
     }
 
     onWindowResize = (e) => {
         let countPerPage = this.countPerPage(window.innerWidth);
-        if (countPerPage !== this.state.count) {
-            this.setState({count: this.getPagesCount()})
+        if (countPerPage !== this.state.lastCountPerPage) {
+            this.setState({count: this.getPagesCount(), lastCountPerPage: countPerPage})
             if (this.currentPage >= this.state.count) {
                 this.showPage(undefined, this.state.count - 1);
             }
@@ -27,8 +28,10 @@ class PaginationList extends Component {
         let pagesCount = 0;
         if (count % countPerPage === 0) {
             pagesCount = count / countPerPage;
+          console.log(count, countPerPage)
         } else {
             pagesCount = Math.floor(count / countPerPage) + 1;
+          console.log(pagesCount)
         }
 
         if (pagesCount > 5) {
